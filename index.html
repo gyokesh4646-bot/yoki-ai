@@ -63,40 +63,99 @@
 
   <p>Created by YOKESH ❤️</p>
 
-  <script>
-    function askYoki() {
-      const input = document.getElementById("message");
-      const msg = input.value.trim().toLowerCase();
-      const reply = document.getElementById("reply");
+  
+<script>
+function askYoki() {
+  const input = document.getElementById("message");
+  const msg = input.value.trim().toLowerCase()
+    .replace(/[?!.,]/g, "")
+    .replace(/\s+/g, " ");
+  const reply = document.getElementById("reply");
 
-      if (!msg) {
-        reply.textContent = "Please type a message!";
-      } else if (msg.includes("who created you") ||
-                 msg.includes("who made you")) {
-        reply.textContent = "I was created by YOKESH!";
-      } else if (msg.includes("who is your boss")) {
-        reply.textContent = "My boss is YOKESH!";
-      } else if (msg.includes("best friend") ||
-                 msg.includes("who is your friend")) {
-        reply.textContent = "My best friend is Akash!";
-      } else if (msg.includes("who are you")) {
-        reply.textContent = "I am YOKI AI, your personal AI assistant!";
-      } else if (msg === "hi" || msg === "hello" ||
-                 msg.startsWith("hey ")) {
-        reply.textContent = "Hello! Welcome to YOKI AI!";
-      } else if (msg.includes("how are you")) {
-        reply.textContent = "I'm fine! How can I help you?";
-      } else if (msg.includes("your name")) {
-        reply.textContent = "My name is YOKI AI!";
-      } else if (msg === "bye" || msg.startsWith("bye ")) {
-        reply.textContent = "Bye! Have a great day!";
-      } else {
-        reply.textContent =
-          "I'm still learning! Please ask me another question.";
-      }
+  if (!msg) {
+    reply.textContent = "Please type a message!";
+    return;
+  }
 
-      input.value = "";
-    }
-  </script>
+  // Greetings
+  else if (/^(h+i+|hello+|hey+|hai+|vanakkam)$/.test(msg)) {
+    reply.textContent = "Hello!";
+  }
+
+  // Goodbye
+  else if (/\b(bye|goodbye|see you|see u|good night)\b/.test(msg)) {
+    reply.textContent = "Bye! Have a great day!";
+  }
+
+  // Boss's best friend
+  else if (msg.includes("best friend") ||
+           msg.includes("close friend") ||
+           msg.includes("who is your friend") ||
+           msg.includes("boss friend")) {
+    reply.textContent = "My boss's best friend is Akash!";
+  }
+
+  // Boss's father
+  else if (msg.includes("father") || msg.includes("dad")) {
+    reply.textContent = "My boss's father name is K. Gnanam!";
+  }
+
+  // Boss's mother
+  else if (msg.includes("mother") || msg.includes("mom") ||
+           msg.includes("amma")) {
+    reply.textContent = "My boss's mother name is G. Deepa!";
+  }
+
+  // Boss's first sister
+  else if (msg.includes("1st sister") ||
+           msg.includes("first sister") ||
+           msg.includes("elder sister")) {
+    reply.textContent = "My boss's first sister name is G. Geetha!";
+  }
+
+  // Boss's second sister
+  else if (msg.includes("2nd sister") ||
+           msg.includes("second sister") ||
+           msg.includes("younger sister")) {
+    reply.textContent = "My boss's second sister name is G. Girija!";
+  }
+
+  // Boss's name
+  else if (msg.includes("boss name") ||
+           msg.includes("name of your boss") ||
+           msg.includes("who is your boss") ||
+           msg.includes("your boss")) {
+    reply.textContent = "My boss name is G. Yokesh!";
+  }
+
+  // Creator / inventor
+  else if (msg.includes("who invented you") ||
+           msg.includes("who created you") ||
+           msg.includes("who made you") ||
+           msg.includes("your creator") ||
+           msg.includes("who developed you")) {
+    reply.textContent = "I was created by YOKESH!";
+  }
+
+  // AI identity
+  else if (msg.includes("who are you") ||
+           msg.includes("your name")) {
+    reply.textContent = "I am YOKI AI, your personal AI assistant!";
+  }
+
+  // How are you?
+  else if (msg.includes("how are you")) {
+    reply.textContent = "I'm fine! How can I help you?";
+  }
+
+  else {
+    reply.textContent =
+      "I'm still learning! Please ask me another question.";
+  }
+
+  input.value = "";
+}
+</script>
+
 </body>
 </html>
